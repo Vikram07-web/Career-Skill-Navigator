@@ -1,0 +1,66 @@
+const roadmaps = {
+  python: {
+    beginner: ["Syntax", "Variables", "Data Types", "Loops", "Functions"],
+    intermediate: ["OOP", "Modules", "File Handling", "Exception Handling"],
+    advanced: ["Decorators", "Generators", "Async Programming", "Libraries: NumPy, Pandas"],
+  },
+  cpp: {
+    beginner: ["Syntax", "Variables", "Loops", "Functions"],
+    intermediate: ["OOP", "STL", "File Handling", "Pointers"],
+    advanced: ["Templates", "Smart Pointers", "Multithreading", "System Programming"],
+  },
+  java: {
+    beginner: ["Syntax", "Classes & Objects", "Loops", "Functions"],
+    intermediate: ["Inheritance", "Interfaces", "Collections", "Exception Handling"],
+    advanced: ["JVM Internals", "Spring Boot", "Multithreading", "Streams API"],
+  },
+  javascript: {
+    beginner: ["Variables", "DOM", "Functions", "Data Types"],
+    intermediate: ["ES6", "Events", "Promises", "APIs"],
+    advanced: ["React", "Node.js", "TypeScript", "Webpack"],
+  },
+  c: {
+    beginner: ["Syntax", "Variables", "Loops", "Functions"],
+    intermediate: ["Pointers", "Arrays", "Structures", "File I/O"],
+    advanced: ["Memory Management", "System Calls", "Makefiles", "Compilers"],
+  },
+  htmlcss: {
+    beginner: ["HTML Basics", "Text Formatting", "Links & Images", "Lists"],
+    intermediate: ["CSS Styling", "Box Model", "Positioning", "Flexbox"],
+    advanced: ["Responsive Design", "Grid Layout", "CSS Animations", "Frameworks (Bootstrap)"],
+  },
+  sql: {
+    beginner: ["Basics of SQL", "SELECT queries", "Filtering", "Sorting"],
+    intermediate: ["Joins", "Subqueries", "GROUP BY", "Stored Procedures"],
+    advanced: ["Triggers", "Indexing", "Optimization", "Transactions"],
+  },
+  kotlin: {
+    beginner: ["Variables", "Functions", "Control Flow", "Null Safety"],
+    intermediate: ["Classes", "Collections", "Lambdas", "Extensions"],
+    advanced: ["Coroutines", "Android Dev", "Jetpack Compose", "Ktor"],
+  },
+  go: {
+    beginner: ["Syntax", "Variables", "Functions", "Control Structures"],
+    intermediate: ["Structs", "Concurrency (goroutines)", "Interfaces", "Modules"],
+    advanced: ["Channels", "Web Dev with Gin", "Testing", "Memory Management"],
+  },
+  swift: {
+    beginner: ["Variables", "Functions", "Control Flow", "Collections"],
+    intermediate: ["OOP", "Protocols", "Closures", "Error Handling"],
+    advanced: ["SwiftUI", "Combine Framework", "Concurrency", "iOS Deployment"],
+  }
+};
+
+document.getElementById('languageSelect').addEventListener('change', function () {
+  const lang = this.value;
+  const roadmap = roadmaps[lang];
+  let html = <h2>${this.options[this.selectedIndex].text} Roadmap</h2>;
+
+  html += <h3>Beginner</h3><ul>${roadmap.beginner.map(item => `<li>${item}</li>).join('')}</ul>`;
+  html += <h3>Intermediate</h3><ul>${roadmap.intermediate.map(item => `<li>${item}</li>).join('')}</ul>`;
+  html += <h3>Advanced</h3><ul>${roadmap.advanced.map(item => `<li>${item}</li>).join('')}</ul>`;
+
+  document.getElementById('roadmapContainer').innerHTML = html;
+});
+
+document.getElementById('languageSelect').dispatchEvent(new Event('change'))
